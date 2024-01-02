@@ -2,6 +2,19 @@
 
 A page to showcase MLSA Togo built with astro and tailwindcss.
 
+# Feature and Improvements
+
+-[ ] image sous la paragraphe
+-[ ] logo à cote de nom mlsa togo
+-[ ] menu avec about, events (mettre les event passés dans le menu)
+-[ ] partie sur les aperçu de video youtube recentes (plus bouton voir)
+-[ ] partie nous contacter pour proposer des evenements
+-[ ] image augmenter les tailes
+-[ ] session faq
+-[ ] mode dark and white
+-[ ] chatbot pour repondre aux questions
+-[ ] styles et police à voir
+
 ## 🚀 Project Structure
 
 Inside of your Astro project, you'll see the following folders and files:
