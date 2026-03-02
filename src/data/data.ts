@@ -58,32 +58,32 @@ export type Event = {
 
 export const events: Event[] = [
   {
-    title: "Azure AI Workshop",
-    date: "2025-01-15",
-    location: "Lomé, Togo",
-    type: "past",
-    description: "Hands-on workshop on Azure AI services and Cognitive APIs.",
-  },
-  {
-    title: "GitHub Copilot Hackathon",
-    date: "2024-11-20",
-    location: "Université de Lomé",
-    type: "past",
-    description: "A full-day hackathon building projects with GitHub Copilot.",
-  },
-  {
-    title: "Cloud Skills Challenge",
-    date: "2024-09-10",
+    title: "Introduction to Microsoft Azure and Azure Web static",
+    date: "2023-04-29",
     location: "Online",
     type: "past",
-    description: "30-day cloud skills challenge with Microsoft Learn paths.",
+    description: "Webinar introducing Microsoft Azure services and how to host static websites on Azure Web Static.",
   },
   {
-    title: "MSA Togo Meetup #3",
-    date: "2024-07-05",
-    location: "Lomé, Togo",
+    title: "GSOC 2024: Tips and opportunities",
+    date: "2024-03-13",
+    location: "Online",
     type: "past",
-    description: "Community meetup with tech talks and networking.",
+    description: "Webinar on Google Summer of Code 2024 opportunities for students.",
+  },
+  {
+    title: "Python 101: Create a Password Generator",
+    date: "2024-06-21",
+    location: "Online",
+    type: "past",
+    description: "Hands-on workshop teaching Python basics by building a password generator.",
+  },
+  {
+    title: "Azure pour tous",
+    date: "2025-01-05",
+    location: "Université de Lomé, Togo",
+    type: "past",
+    description: "Atelier en présentiel à l'Université de Lomé pour découvrir les services Azure et leurs applications pratiques.",
   },
 ];
 
@@ -99,6 +99,8 @@ export type Member = {
 export const members: Member[] = [
   { name: "Geoffrey Logovi", photo: "/images/avatars/geo.png", tier: "gold", role: "IT Engineer, Cloud" },
   { name: "Ghislain M.", photo: "/images/avatars/ghislain.jpg", tier: "beta", role: "Cyber Security Expert" },
+  { name: "Rodrigue ASSOUN", photo: "https://images.mvp.microsoft.com/75b4a989-90ea-4a16-8fce-0ccb4bbefe04?638871554048056095", tier: "beta", role: "Software Engineer" },
+  { name: "Nelson GALLEY", photo: "https://images.mvp.microsoft.com/a8a8c93a-cbfb-4b7c-86ec-5d28c37e8736?638885107397891541", tier: "new", role: "Software Engineer" },
   { name: "Wachiou Bouraima", photo: "/images/avatars/wasscodeur.jpg", tier: "beta", role: "Python Developer" },
   { name: "Pakou", photo: "/images/avatars/pakou.jpg", tier: "new", role: "Developer" },
   { name: "Samadou", photo: "/images/avatars/samadou.jpg", tier: "new", role: "Developer" },
