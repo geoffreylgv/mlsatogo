@@ -85,6 +85,13 @@ export const events: Event[] = [
     type: "past",
     description: "Atelier en présentiel à l'Université de Lomé pour découvrir les services Azure et leurs applications pratiques.",
   },
+  {
+    title: "Azure 900 bootcamp certification and AI",
+    date: "2024-01-06 - 2024-02-10",
+    location: "Online",
+    type: "past",
+    description: "Bootcamp to prepare for the Microsoft Azure Fundamentals certification and explore AI capabilities.",
+  },
 ];
 
 // --- Members ---
@@ -113,8 +120,8 @@ export type HeaderEvent = {
 };
 
 export const headerPastEvents: HeaderEvent[] = [
-  { title: "Azure AI Workshop", date: "Jan 2025" },
-  { title: "GitHub Copilot Hackathon", date: "Nov 2024" },
-  { title: "Cloud Skills Challenge", date: "Sep 2024" },
-  { title: "MSA Togo Meetup #3", date: "Jul 2024" },
+  //here write the event i passed earlier in Event
+  { title: "Azure pour tous", date: "2025-01-05" },
+  { title: "Azure 900 bootcamp certification and AI", date: "2024-01-06 - 2024-02-10" },
+
 ];
