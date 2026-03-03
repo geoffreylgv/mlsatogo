@@ -87,7 +87,7 @@ export const events: Event[] = [
   },
   {
     title: "Azure 900 bootcamp certification and AI",
-    date: "2024-01-06 - 2024-02-10",
+    date: "2024-01-06",
     location: "Online",
     type: "past",
     description: "Bootcamp to prepare for the Microsoft Azure Fundamentals certification and explore AI capabilities.",
