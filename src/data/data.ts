@@ -92,6 +92,13 @@ export const events: Event[] = [
     type: "past",
     description: "Bootcamp to prepare for the Microsoft Azure Fundamentals certification and explore AI capabilities.",
   },
+  {
+    title: "Microsoft Build //localhost:lome 2026",
+    date: "2026-06-06",
+    location: "in-person in Lomé. Open The Box Rue 186 AFG, Lomé, Togo",
+    type: "upcoming",
+    description: "Microsoft Build is an annual conference event held by Microsoft, where developers and technology enthusiasts gather to learn about the latest innovations, tools, and technologies from Microsoft. The //localhost:lome edition in 2026 will feature keynotes, technical sessions, workshops, and networking opportunities focused on empowering developers in the region with Microsoft's ecosystem.",
+  },
 ];
 
 // --- Members ---
@@ -121,6 +128,7 @@ export type HeaderEvent = {
 
 export const headerPastEvents: HeaderEvent[] = [
   //here write the event i passed earlier in Event
+  { title: "Microsoft Build : localhost lome", date: "2026-06-06" },
   { title: "Azure pour tous", date: "2025-01-05" },
   { title: "Azure 900 bootcamp certification and AI", date: "2024-01-06 - 2024-02-10" },
 

@@ -8,7 +8,7 @@ export function Footer() {
     <footer className="border-t border-border/50 py-10">
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-3">
-          <img src="/images/clients/MLSA.png" alt="MSA" className="h-8 w-8 rounded-lg" />
+          <img src="/images/clients/MLSA.png" alt="MSA TOGO logo" className="h-8 w-8 rounded-lg" />
           <span className="font-display font-bold">MSA TOGO</span>
         </div>
         <p className="text-sm text-muted-foreground">

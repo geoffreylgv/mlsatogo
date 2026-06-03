@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
 import { LanguageProvider } from "@/i18n/LanguageContext";
+import { ScrollToHash } from "@/components/ScrollToHash";
 import Index from "./pages/Index";
 import MembersPage from "./pages/Members";
 import NotFound from "./pages/NotFound";
@@ -19,6 +20,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <ScrollToHash />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/members" element={<MembersPage />} />

@@ -26,7 +26,7 @@ export const translations = {
       members: "Members",
       contact: "Contact",
       faq: "FAQ",
-      pastEvents: "Past events",
+      pastEvents: "Recent events",
       upcomingEvents: "Upcoming events",
     },
     hero: {
@@ -140,7 +140,7 @@ export const translations = {
       members: "Membres",
       contact: "Contact",
       faq: "FAQ",
-      pastEvents: "Événements passés",
+      pastEvents: "Événements récents",
       upcomingEvents: "Événements à venir",
     },
     hero: {
