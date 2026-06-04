@@ -7,11 +7,12 @@ import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/i18n/LanguageContext";
 
-// Web3Forms access key. Safe to expose client-side (it only routes submissions
-// to the inbox configured at web3forms.com). Override via env var to rotate it.
-const WEB3FORMS_ACCESS_KEY =
-  (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | undefined) ||
-  "1e239f76-9e38-4625-a9b4-687d54f2b592";
+// Web3Forms access key, read from the environment.
+// Set VITE_WEB3FORMS_ACCESS_KEY in .env (local) and in the Vercel project
+// settings (production). The key is safe to expose client-side; it only routes
+// submissions to the inbox configured at web3forms.com.
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | undefined;
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 
 export function ContactSection() {
   const { t } = useLanguage();
@@ -29,25 +30,24 @@ export function ContactSection() {
 
     setSubmitting(true);
     try {
-      // Honeypot: a hidden field bots tend to fill in.
-      const botcheck = (e.currentTarget.elements.namedItem("botcheck") as HTMLInputElement)?.value;
+      // Use FormData (multipart) so the request stays a CORS "simple request"
+      // with no preflight OPTIONS, matching the official Web3Forms example.
+      const formData = new FormData();
+      formData.append("access_key", WEB3FORMS_ACCESS_KEY);
+      formData.append("name", form.name);
+      formData.append("email", form.email);
+      formData.append("subject", `[MSA Togo] ${form.subject}`);
+      formData.append("message", form.message);
+      formData.append("from_name", "MSA Togo website");
+      formData.append("replyto", form.email);
 
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
-          name: form.name,
-          email: form.email,
-          subject: `[MSA Togo] ${form.subject}`,
-          message: form.message,
-          from_name: "MSA Togo website",
-          replyto: form.email,
-          botcheck,
-        }),
-      });
+      // Honeypot: only set when a bot ticked the hidden checkbox.
+      const botcheck = (e.currentTarget.elements.namedItem("botcheck") as HTMLInputElement)?.checked;
+      if (botcheck) formData.append("botcheck", "true");
 
+      const res = await fetch(WEB3FORMS_ENDPOINT, { method: "POST", body: formData });
       const data = await res.json();
+
       if (data.success) {
         toast({ title: t.contact.sent, description: t.contact.sentDescription });
         setForm({ name: "", email: "", subject: "", message: "" });
@@ -83,7 +83,7 @@ export function ContactSection() {
           onSubmit={handleSubmit}
           className="glass rounded-2xl p-8 space-y-5"
         >
-          {/* Honeypot field — hidden from users, ignored by humans, caught by Web3Forms. */}
+          {/* Honeypot field, hidden from users, ignored by humans, caught by Web3Forms. */}
           <input
             type="checkbox"
             name="botcheck"
