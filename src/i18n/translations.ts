@@ -9,7 +9,7 @@ export type Translations = {
   about: { title: string; titleHighlight: string; subtitle: string; features: Feature[] };
   partners: { title: string };
   videos: { title: string; titleHighlight: string; subtitle: string; seeMore: string };
-  contact: { title: string; titleHighlight: string; subtitle: string; name: string; email: string; subject: string; message: string; send: string; sent: string; sentDescription: string };
+  contact: { title: string; titleHighlight: string; subtitle: string; name: string; email: string; subject: string; message: string; send: string; sending: string; sent: string; sentDescription: string; error: string; errorDescription: string };
   faq: { title: string; titleHighlight: string; items: FAQ[] };
   cta: { title: string; subtitle: string; applyNow: string };
   footer: { rights: string };
@@ -81,8 +81,11 @@ export const translations = {
       subject: "Subject (e.g. AI Workshop, Hackathon...)",
       message: "Describe your event idea...",
       send: "Send",
+      sending: "Sending...",
       sent: "Message sent!",
       sentDescription: "We'll get back to you soon.",
+      error: "Something went wrong",
+      errorDescription: "Your message couldn't be sent. Please try again or email us directly.",
     },
     faq: {
       title: "Frequently asked",
@@ -196,8 +199,11 @@ export const translations = {
       subject: "Sujet (ex: Workshop IA, Hackathon...)",
       message: "Décrivez votre idée d'événement...",
       send: "Envoyer",
+      sending: "Envoi...",
       sent: "Message envoyé !",
       sentDescription: "Nous reviendrons vers vous bientôt.",
+      error: "Une erreur est survenue",
+      errorDescription: "Votre message n'a pas pu être envoyé. Réessayez ou écrivez-nous directement.",
     },
     faq: {
       title: "Questions",
