@@ -13,7 +13,7 @@ export type Translations = {
   faq: { title: string; titleHighlight: string; items: FAQ[] };
   cta: { title: string; subtitle: string; applyNow: string };
   footer: { rights: string };
-  events: { past: string; upcoming: string; noUpcoming: string };
+  events: { past: string; upcoming: string; noUpcoming: string; addToCalendar: string };
   members: { title: string; titleHighlight: string; subtitle: string; all: string; placeholder: string };
 };
 
@@ -126,6 +126,7 @@ export const translations = {
       past: "Past",
       upcoming: "Upcoming",
       noUpcoming: "No upcoming events yet. Stay tuned!",
+      addToCalendar: "Add to calendar",
     },
     members: {
       title: "Our",
@@ -244,6 +245,7 @@ export const translations = {
       past: "Passés",
       upcoming: "À venir",
       noUpcoming: "Aucun événement à venir pour le moment. Restez à l'écoute !",
+      addToCalendar: "Ajouter au calendrier",
     },
     members: {
       title: "Nos",

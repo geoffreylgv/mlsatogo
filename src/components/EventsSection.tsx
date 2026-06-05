@@ -1,13 +1,28 @@
 import { motion } from "framer-motion";
-import { Calendar, MapPin } from "lucide-react";
+import { Calendar, MapPin, CalendarPlus } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { events } from "@/data/data";
+import { getEventStatus, eventStartMs, googleCalendarUrl, parseEventDates } from "@/lib/events";
+
+function formatEventDate(date: string): string {
+  const { start, end } = parseEventDates(date);
+  const fmt = (d: Date) => d.toLocaleDateString();
+  return start.getTime() === end.getTime() ? fmt(start) : `${fmt(start)} – ${fmt(end)}`;
+}
 
 export function EventsSection() {
   const { t } = useLanguage();
-  const [tab, setTab] = useState<"past" | "upcoming">("past");
-  const filtered = events.filter((e) => e.type === tab);
+  const [tab, setTab] = useState<"past" | "upcoming">("upcoming");
+
+  const filtered = events
+    .filter((e) => getEventStatus(e.date) === tab)
+    .sort((a, b) =>
+      // Upcoming: soonest first. Past: most recent first.
+      tab === "upcoming"
+        ? eventStartMs(a.date) - eventStartMs(b.date)
+        : eventStartMs(b.date) - eventStartMs(a.date),
+    );
 
   return (
     <section id="events" className="py-24">
@@ -24,7 +39,7 @@ export function EventsSection() {
         </motion.div>
 
         <div className="flex justify-center gap-2 mb-10">
-          {(["past", "upcoming"] as const).map((type) => (
+          {(["upcoming", "past"] as const).map((type) => (
             <button
               key={type}
               onClick={() => setTab(type)}
@@ -56,17 +71,29 @@ export function EventsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="glass rounded-2xl p-6 hover:shadow-xl transition-shadow"
+              className="glass rounded-2xl p-6 hover:shadow-xl transition-shadow flex flex-col"
             >
               <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
                 <Calendar className="h-3.5 w-3.5" />
-                <span>{new Date(event.date).toLocaleDateString()}</span>
+                <span>{formatEventDate(event.date)}</span>
                 <span className="mx-1">•</span>
                 <MapPin className="h-3.5 w-3.5" />
                 <span>{event.location}</span>
               </div>
               <h3 className="font-display text-lg font-bold mb-2">{event.title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{event.description}</p>
+
+              {tab === "upcoming" && (
+                <a
+                  href={googleCalendarUrl(event)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex items-center gap-1.5 self-start text-sm font-semibold text-primary hover:underline"
+                >
+                  <CalendarPlus className="h-4 w-4" />
+                  {t.events.addToCalendar}
+                </a>
+              )}
             </motion.div>
           ))}
         </div>

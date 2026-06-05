@@ -48,11 +48,13 @@ export const videos: Video[] = [
 ];
 
 // --- Events ---
+// `date` is "YYYY-MM-DD" or a range "YYYY-MM-DD - YYYY-MM-DD".
+// Past vs upcoming is derived from the date automatically (see src/lib/events.ts),
+// so you never have to set or update a status by hand.
 export type Event = {
   title: string;
   date: string;
   location: string;
-  type: "past" | "upcoming";
   description: string;
 };
 
@@ -61,42 +63,36 @@ export const events: Event[] = [
     title: "Introduction to Microsoft Azure and Azure Web static",
     date: "2023-04-29",
     location: "Online",
-    type: "past",
     description: "Webinar introducing Microsoft Azure services and how to host static websites on Azure Web Static.",
   },
   {
     title: "GSOC 2024: Tips and opportunities",
     date: "2024-03-13",
     location: "Online",
-    type: "past",
     description: "Webinar on Google Summer of Code 2024 opportunities for students.",
   },
   {
     title: "Python 101: Create a Password Generator",
     date: "2024-06-21",
     location: "Online",
-    type: "past",
     description: "Hands-on workshop teaching Python basics by building a password generator.",
   },
   {
     title: "Azure pour tous",
     date: "2025-01-05",
     location: "Université de Lomé, Togo",
-    type: "past",
     description: "Atelier en présentiel à l'Université de Lomé pour découvrir les services Azure et leurs applications pratiques.",
   },
   {
     title: "Azure 900 bootcamp certification and AI",
     date: "2024-01-06",
     location: "Online",
-    type: "past",
     description: "Bootcamp to prepare for the Microsoft Azure Fundamentals certification and explore AI capabilities.",
   },
   {
     title: "Microsoft Build //localhost:lome 2026",
     date: "2026-06-06",
     location: "in-person in Lomé. Open The Box Rue 186 AFG, Lomé, Togo",
-    type: "upcoming",
     description: "Microsoft Build is an annual conference event held by Microsoft, where developers and technology enthusiasts gather to learn about the latest innovations, tools, and technologies from Microsoft. The //localhost:lome edition in 2026 will feature keynotes, technical sessions, workshops, and networking opportunities focused on empowering developers in the region with Microsoft's ecosystem.",
   },
 ];
